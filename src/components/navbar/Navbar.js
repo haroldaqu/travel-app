@@ -2,7 +2,7 @@ const Navbar = () => {
     return ( 
         <nav className="navbar navbar-expand-md">
             <div className="container-xxl">
-                <span className="navbar-brand" href="#">Travel</span>
+                <span className="navbar-brand text-primary" href="#" id="logo">Travel</span>
                 <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle Navigation" id="logo-btn">
                     <span className="navbar-toggler-icon"></span>
                 </button>

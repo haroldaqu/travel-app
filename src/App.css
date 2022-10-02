@@ -1,22 +1,67 @@
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+  }
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(left, #fff, #e4e4e4);
+    border: 1px solid #aaa;
+  }
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+  }
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(left, #22ADD4, #1E98BA);
+  }
+
+#card-prac {
+  outline: solid red;
+}
 
 body {
   overflow: hidden;
 }
 
+/* #logo {
+  color: #e7ecf0 !important;
+} */
+
 #home-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
   height: 90vh !important;
 }
 
 #search-bar {
-  outline: solid red;
-  height: 10% !important;
+  /* outline: solid red; */
+  /* height: 5% !important; */
 }
 
 #card-cont {
   overflow-y: scroll;
-  height: 90% !important;
+  height: 100% !important;
 }
 
 #card {
   border: transparent !important;
+}
+
+#search-bar-cont {
+  display: flex !important;
+  gap: 1rem !important;
+  padding: 0 !important;
+}
+
+#sort-cont {
+  padding: 0 !important;
 }
