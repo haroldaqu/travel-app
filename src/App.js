@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle';
+import Navbar from './components/navbar/Navbar';
+import Map from './components/maps/Map';
+import Card from './components/card/Card';
+import SearchBar from './components/searchbar/SearchBar';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className="container-xxl">
+        <div className="row">
+          <Map  name={"col-5 "} />
+          <div className="col-7" id="home-content" >
+            <SearchBar />
+            <div className="row row-cols-md-2 g-4" id="card-cont">
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+            </div>
+            
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
