@@ -1,6 +1,6 @@
 import starRatings from "../../utlity/starIcons";
 
-const Card = ({place: {name, ranking, rating, photo, num_reviews,price_level }}) => {
+const Card = ({place: {name, ranking, rating, photo, num_reviews, price_level }}) => {
 
     return ( 
     <div className="card mb-4 ms-2 me-2 shadow bg-white rounded" id="card" >

@@ -27,11 +27,13 @@ const options = {
 const App = () => {
   const [toggle, setToggle] = useState(true)
   const [places, setPlaces] = useState(null)
+  const [filteredPlaces, setFilteredPlaces] = useState(false)
   const [coordinates, setCoordinates] = useState({lat: 34.052235, lng: -118.243683})
   const [bounds, setBounds] = useState({ne: {lat: 34.07768965945131, lng: -118.21763338604737}, sw: {lat: 34.026772695442176, lng: -118.26973261395264}})
   const [type, setType] = useState('hotels')
-  const[rating, setRatings] = useState('All')
-  const [filters, setFilters] = useState({type: 'hotels', price: 'All', review: 'All'})
+  const[ratings, setRatings] = useState(null)
+  const [priceLevel, setPriceLevel] = useState(null)
+  const [sortPlaces, setSortPlaces] = useState(null)
   const [loading, setLoading] = useState(false)
   const [childClick, setChildClick] = useState(null)
 
@@ -47,15 +49,25 @@ const fetchPlaces = async (sw, ne) => {
     }
 }
 
-useEffect(() => {
 
-}, [])
+
+useEffect(() => {
+  const filteredRatings = places?.filter(place => place.rating > ratings)
+  // const filteredPriceLevels = places?.filter(place => place.priceLevel > place.priceLevel)
+  // const filteredBoth = places?.filter(place => place.rating > ratings).filter(place => place.priceLevel > priceLevel)
+    setFilteredPlaces(filteredRatings)
+}, [ratings])
+
+useEffect(() => {
+  const sortedPlaces = places?.sort((a,b) => Number(b.num_reviews) - Number(a.num_reviews))
+  setPlaces(sortedPlaces)
+}, [sortPlaces])
 
 
   useEffect(() => {
     setLoading(true)
     fetchPlaces(bounds.sw, bounds.ne)
-  },[coordinates, bounds, type])
+  },[coordinates, bounds, type, filteredPlaces, ratings, sortPlaces])
 
 
   return (
@@ -63,17 +75,15 @@ useEffect(() => {
       <Navbar />
       <div className="row ">
         { toggle ?
-          <Map  name={"col-6"} setCoordinates={setCoordinates} setBounds={setBounds}  coordinates={coordinates} places={places} setChildClick={setChildClick}/> : null
+          <Map  name={"col-6"} setCoordinates={setCoordinates} setBounds={setBounds}  coordinates={coordinates} places={filteredPlaces ? filteredPlaces : places} setChildClick={setChildClick}/> : null
         }
         <div className={toggle ? "col-6 d-flex" : "col-12 d-flex"} id="home-content" >
           <SearchBar setType={setType}>
             <Toggle  setToggle={setToggle} toggle={toggle} />
           </SearchBar>
-          <h6 className='mb-4 ms-2 me-2' >Search results: {places && places.length} {type}</h6>
-          <FiltSort setType={setType}/>
-          <CardGroup>
-            {!loading && places ? places.map((place, i) => <Card key={i} i={i} place={place}/>  ) : <Spinner />} 
-          </CardGroup>
+          <h6 className='mb-4 ms-2 me-2' >Search results: {places && filteredPlaces ? filteredPlaces.length : places ? places.length : null} {type}</h6>
+          <FiltSort setType={setType} setRatings={setRatings} setPriceLevel={setPriceLevel} setFilteredPlaces={setFilteredPlaces} places={places} setPlaces={setPlaces} setSortPlaces={setSortPlaces} />
+          <CardGroup  places={filteredPlaces ? filteredPlaces : places} loading={loading}/>
         </div>
       </div>
     </div>
