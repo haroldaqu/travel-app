@@ -71,21 +71,24 @@ useEffect(() => {
 
 
   return (
-    <div className="App container-xxl">
+    <div className="App container">
       <Navbar />
-      <div className="row ">
-        { toggle ?
-          <Map  name={"col-6"} setCoordinates={setCoordinates} setBounds={setBounds}  coordinates={coordinates} places={filteredPlaces ? filteredPlaces : places} setChildClick={setChildClick}/> : null
+      <main className="row">
+        { toggle &&
+          <Map  setCoordinates={setCoordinates} setBounds={setBounds}  coordinates={coordinates} places={filteredPlaces ? filteredPlaces : places} setChildClick={setChildClick}/> 
         }
-        <div className={toggle ? "col-6 d-flex" : "col-12 d-flex"} id="home-content" >
-          <SearchBar setType={setType}>
-            <Toggle  setToggle={setToggle} toggle={toggle} />
-          </SearchBar>
-          <h6 className='mb-4 ms-2 me-2' >Search results: {places && filteredPlaces ? filteredPlaces.length : places ? places.length : null} {type}</h6>
-          <FiltSort setType={setType} setRatings={setRatings} setPriceLevel={setPriceLevel} setFilteredPlaces={setFilteredPlaces} places={places} setPlaces={setPlaces} setSortPlaces={setSortPlaces} />
-          <CardGroup  places={filteredPlaces ? filteredPlaces : places} loading={loading}/>
-        </div>
-      </div>
+        <section className="col" id="home-content" >
+            <div className="row gy-4">
+              <SearchBar setType={setType} setCoordinates={setCoordinates} toggle/>
+              <FiltSort setType={setType} setRatings={setRatings} setPriceLevel={setPriceLevel} setFilteredPlaces={setFilteredPlaces} places={places} setPlaces={setPlaces} setSortPlaces={setSortPlaces} toggle/>
+              <div className="col-12 d-flex justify-content-between">
+                <h6>Search results: {places && filteredPlaces ? filteredPlaces.length : places ? places.length : null} {type}</h6>
+                <Toggle  setToggle={setToggle} toggle={toggle} />
+              </div>
+            </div>
+              <CardGroup  places={filteredPlaces ? filteredPlaces : places} loading={loading}  toggle/>
+        </section>
+      </main>
     </div>
   );
 }

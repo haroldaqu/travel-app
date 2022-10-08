@@ -46,9 +46,9 @@ body {
 } */
 
 #home-content {
-  display: flex !important;
+  /* display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
+  justify-content: space-between !important; */
   height: 90vh !important;
 }
 

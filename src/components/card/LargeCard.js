@@ -1,12 +1,13 @@
 import starRatings from "../../utlity/starIcons";
 
-const Card = ({place: {name, ranking, rating, photo, num_reviews, price_level }, toggle}) => {
+const LargeCard = ({place: {name, ranking, rating, photo, num_reviews, price_level }, toggle}) => {
 
     return ( 
     <div className="card mb-4 ms-2 me-2 shadow bg-white rounded" id="card" >
+        large card
         { name && 
         <div className="row g-0 p-3">
-            <div className="col-md-4" >
+            <div className="col-md-2" >
                 <img src={photo ? photo.images.medium.url : null} className="card-img-top rounded" alt={name} />
             </div>
             <div className="col-md-8 m-0" >
@@ -25,4 +26,4 @@ const Card = ({place: {name, ranking, rating, photo, num_reviews, price_level },
      );
 }
  
-export default Card;
+export default LargeCard;
