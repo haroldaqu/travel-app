@@ -3,7 +3,7 @@ const FiltSort = ({setType, setRatings, setPriceLevel, setFilteredPlaces, places
         <div className={toggle ? "col-12 d-flex justify-content-between": "col-lg-6 col-12 d-flex justify-content-between"}>
             <div className="d-flex">
                   <div className="dropdown" id="dropdown">
-                      <button className="btn btn-outline-primary dropdown-toggle border-0 shadow rounded" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Type</button>
+                      <button className="btn btn-outline-primary dropdown-toggle border-0 shadow rounded me-3" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Type</button>
                       <ul className="dropdown-menu" aria-labelledby="defaultDropdown">
                         <li><a className="dropdown-item" href="#" onClick={(e) => {
                             setType(e.target.innerText.toLowerCase())
@@ -22,7 +22,7 @@ const FiltSort = ({setType, setRatings, setPriceLevel, setFilteredPlaces, places
                   </div>
   
                   <div className="dropdown" id="dropdown">
-                      <button className="btn btn-outline-primary dropdown-toggle border-0 shadow rounded" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Ratings</button>
+                      <button className="btn btn-outline-primary dropdown-toggle border-0 shadow rounded me-3" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Ratings</button>
                       <ul className="dropdown-menu" aria-labelledby="defaultDropdown">
                           <li><a className="dropdown-item" href="#" onClick={(e) => setRatings(null)}>All</a></li>
                           <li><a className="dropdown-item" href="#" onClick={(e) => setRatings(e.target.innerText)}>3.0</a></li>
@@ -32,7 +32,7 @@ const FiltSort = ({setType, setRatings, setPriceLevel, setFilteredPlaces, places
                   </div>
 
                   <div className="dropdown" id="dropdown">
-                      <button className="btn btn-outline-primary dropdown-toggle border-0 shadow  rounded" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Price</button>
+                      <button className="btn btn-outline-primary dropdown-toggle border-0 shadow  rounded me-3" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Price</button>
                       <ul className="dropdown-menu" aria-labelledby="defaultDropdown">
                           <li><a className="dropdown-item" href="#" onClick={(e) => setPriceLevel(null)}>All</a></li>
                           <li><a className="dropdown-item" href="#" onClick={(e) => setRatings(e.target.innerText)}>$</a></li>

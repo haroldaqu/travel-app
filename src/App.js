@@ -16,13 +16,6 @@ import Toggle from './components/toggle/Toggle';
 import ButtonGroup from './components/button-group/ButtonGroup';
 import FiltSort from './components/FiltSort/FiltSort';
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '0aa98e4d75mshcd524deb6e7dce3p1d3190jsn21eb5d67de6a',
-		'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
-	}
-}
 
 const App = () => {
   const [toggle, setToggle] = useState(true)
@@ -37,19 +30,28 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [childClick, setChildClick] = useState(null)
 
-const fetchPlaces = async (sw, ne) => {
-    try {
-      const response = await fetch(`https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary?bl_latitude=${sw.lat}&bl_longitude=${sw.lng}&tr_longitude=${ne.lng}&tr_latitude=${ne.lat}&limit=30&currency=USD&subcategory=hotel%2Cbb%2Cspecialty&adults=1`, options)
-      const data = await response.json()
-      setPlaces(data.data.filter(place => !place.ad_position))
-      setLoading(false)
-      console.log('fetch used')
-    } catch (error) {
-      console.log(error)
-    }
-}
 
-
+  const fetchPlaces = async (sw, ne) => {
+      // const apiKey = 'netlify/functions/apiKey.js'
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
+          // 'X-RapidAPI-Key': '1c51db29eamsh83fa7a3d28d615ap1daaa1jsned4c6cddcfed',
+          'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+        }
+      };
+      try {
+        // console.log(apiKey)
+        const response = await fetch(`https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary?bl_latitude=${sw.lat}&bl_longitude=${sw.lng}&tr_longitude=${ne.lng}&tr_latitude=${ne.lat}&limit=30&currency=USD&subcategory=hotel%2Cbb%2Cspecialty&adults=1`, options)
+        const data = await response.json()
+        setPlaces(data.data.filter(place => !place.ad_position))
+        setLoading(false)
+        console.log('fetch used')
+      } catch (error) {
+        console.log(error)
+      }
+  }
 
 useEffect(() => {
   const filteredRatings = places?.filter(place => place.rating > ratings)
@@ -67,7 +69,7 @@ useEffect(() => {
   useEffect(() => {
     setLoading(true)
     fetchPlaces(bounds.sw, bounds.ne)
-  },[coordinates, bounds, type, filteredPlaces, ratings, sortPlaces])
+  },[coordinates, bounds, type, filteredPlaces, ratings, sortPlaces, toggle])
 
 
   return (
@@ -78,7 +80,7 @@ useEffect(() => {
           <Map  setCoordinates={setCoordinates} setBounds={setBounds}  coordinates={coordinates} places={filteredPlaces ? filteredPlaces : places} setChildClick={setChildClick}/> 
         }
         <section className="col" id="home-content" >
-            <div className="row gy-4">
+            <div className="row h-25">
               <SearchBar setType={setType} setCoordinates={setCoordinates} toggle/>
               <FiltSort setType={setType} setRatings={setRatings} setPriceLevel={setPriceLevel} setFilteredPlaces={setFilteredPlaces} places={places} setPlaces={setPlaces} setSortPlaces={setSortPlaces} toggle/>
               <div className="col-12 d-flex justify-content-between">
@@ -86,7 +88,7 @@ useEffect(() => {
                 <Toggle  setToggle={setToggle} toggle={toggle} />
               </div>
             </div>
-              <CardGroup  places={filteredPlaces ? filteredPlaces : places} loading={loading}  toggle/>
+            <CardGroup  places={filteredPlaces ? filteredPlaces : places} loading={loading}  toggle/>
         </section>
       </main>
     </div>

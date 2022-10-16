@@ -1,37 +1,24 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 .App {
-  font-family: 'Roboto',sans-serif !important; 
+  font-family: 'Roboto', sans-serif !important;
 }
 
-.map {
-  /* outline: solid red; */
+::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+    background-color: white;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
-  }
+    width: 5px;
+    background-color: white;
+}
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: linear-gradient(left, #fff, #e4e4e4);
-    border: 1px solid #aaa;
-  }
-
-::-webkit-scrollbar-thumb:hover {
-    background: #fff;
-  }
-
-::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(left, #22ADD4, #1E98BA);
-  }
+    background-color: #0d6efd;
+    border-radius: 2.5px;
+}
 
 #card-prac {
   outline: solid red;
@@ -52,26 +39,14 @@ body {
   height: 90vh !important;
 }
 
-#search-bar {
-  /* outline: solid red; */
-  /* height: 5% !important; */
-}
 
 #card-cont {
   overflow-y: scroll;
-  height: 100% !important;
+  overflow-x: hidden;
+  /* height: 80% !important; */
 }
 
 #card {
   border: transparent !important;
 }
 
-#search-bar-cont {
-  display: flex !important;
-  gap: 1rem !important;
-  padding: 0 !important;
-}
-
-#sort-cont {
-  padding: 0 !important;
-}

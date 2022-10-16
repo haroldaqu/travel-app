@@ -3,7 +3,7 @@ import starRatings from "../../utlity/starIcons";
 const Card = ({place: {name, ranking, rating, photo, num_reviews, price_level }, toggle}) => {
 
     return ( 
-    <div className="card mb-4 ms-2 me-2 shadow bg-white rounded" id="card" >
+    <div className="card mb-4 shadow bg-white rounded" id="card" >
         { name && 
         <div className="row g-0 p-3">
             <div className="col-md-4" >
