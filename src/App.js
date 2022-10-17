@@ -3,17 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
-import { createRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Navbar from './components/navbar/Navbar';
 import Map from './components/maps/Map';
-import Card from './components/card/Card';
 import SearchBar from './components/searchbar/SearchBar';
 import CardGroup from './components/card/CardGroup';
-import Sort from './components/sort/Sort';
-import Spinner from './components/spinner/Spinner';
 import Toggle from './components/toggle/Toggle';
-import ButtonGroup from './components/button-group/ButtonGroup';
 import FiltSort from './components/FiltSort/FiltSort';
 
 
@@ -52,6 +48,11 @@ const App = () => {
         console.log(error)
       }
   }
+
+  useEffect(() => {
+    setLoading(true)
+    fetchPlaces(bounds.sw, bounds.ne)
+  },[])
 
 useEffect(() => {
   const filteredRatings = places?.filter(place => place.rating > ratings)
