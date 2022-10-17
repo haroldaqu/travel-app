@@ -17,7 +17,7 @@ const SearchBar = ({setType, children, setCoordinates, toggle}) => {
             <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
                 <div className="input-group shadow p-2 bg-white rounded">
                   <input type="text" className="form-control border-0 rounded-0"  placeholder="Search location" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                  <button className="btn btn-primary rounded" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
+                  <button className="btn btn-primary rounded bg-white border-0" type="button" id="button-addon2"><i className="bi bi-search text-primary"></i></button>
                 </div>
             </Autocomplete>
             {children}
