@@ -8,7 +8,7 @@ const Map = ({setCoordinates, setBounds, coordinates, places, setChildClick}) =>
         <section className="col d-none d-lg-block" id="home-content" >
           {coordinates && 
             <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyCk62ecal104XmdP71n5YGp2NImzTLi7BQ" }}
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLEAPI_KEY }}
                 options={{styles: mapStyle}}
                 defaultCenter={{lat: 10.99835602, lng: 77.01502627}}
                 center={coordinates}
