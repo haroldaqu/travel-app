@@ -32,8 +32,8 @@ const App = () => {
       const options = {
         method: 'GET',
         headers: {
-          'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
-          // 'X-RapidAPI-Key': '1c51db29eamsh83fa7a3d28d615ap1daaa1jsned4c6cddcfed',
+          // 'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
+          'X-RapidAPI-Key': '1c51db29eamsh83fa7a3d28d615ap1daaa1jsned4c6cddcfed',
           'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
         }
       };
